@@ -1,0 +1,39 @@
+.hotel-card {
+  -webkit-box-shadow: 0px 1px 2px 0px #70817c;
+  box-shadow: 0px 1px 2px 0px #70817c;
+  margin-bottom: 20px;
+  min-height: 200px;
+  .flex {
+    padding: 0;
+  }
+  .feature-img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .hotel-card-descreption{
+    padding: 20px 35px;
+    .title{
+      font-size: 14px;
+    }
+  }
+  .hotel-card-price {
+    padding: 20px 20px;
+    background: #E5F7F4;
+  }
+  .min-rate {
+    font-size: 22px !important;
+    color: #333;
+    margin-top: 52px;
+  }
+}
+
+
+.mdi-star-outline {
+  display: none !important;
+}
+
+.v-rating .v-icon {
+  padding: .1rem;
+}

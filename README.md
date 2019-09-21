@@ -1,4 +1,4 @@
-# holidays
+# woo-custom-dashboard
 
 ## Project setup
 ```
