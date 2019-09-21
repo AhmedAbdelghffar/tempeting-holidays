@@ -22,7 +22,7 @@
 </template>
 
 <script>
-  import listItem from './hotels-list-item'
+  import listItem from './list-item/hotels-list-item'
   export default {
     name: "list",
     components: {

@@ -1,8 +1,8 @@
 <template>
-  <div class="hotel-card">
+  <div class="hotel-card" v-if="hotel">
     <v-layout row wrap class="ma-0">
       <v-flex md3>
-        <img :src="`http://photos.hotelbeds.com/giata/bigger/${hotel.images[0].path}`" class="feature-img" alt="">
+        <img v-if="hotel.images" :src="`http://photos.hotelbeds.com/giata/bigger/${hotel.images[0].path}`" class="feature-img" alt="">
       </v-flex>
       <v-flex md6>
         <div class="hotel-card-descreption">
@@ -21,12 +21,13 @@
               <p v-if="mailFacilities.carPark !== -1" class="mb-1 d-flex align-center"><v-icon class="mr-2" small color="secondary">mdi-garage</v-icon> Car park</p>
             </v-flex>
           </v-layout>
+          <item-tabs></item-tabs>
         </div>
       </v-flex>
-      <v-flex xs3>
-        <div class="hotel-card-price">
+      <v-flex md3>
+        <div class="hotel-card-price" v-if="hotel.roomsRate">
           <a class="font-weight-bold">{{hotel.roomsRate[0].name}}</a>
-          <p class="title d-block text-right min-rate">{{hotel.roomsRate[0].rates[0].net}} <v-icon color="#333">mdi-currency-eur</v-icon></p>
+          <p class="title d-block text-right min-rate">{{hotel.roomsRate[0].rates[0].net}} <v-icon small color="#333">mdi-currency-eur</v-icon></p>
           <v-btn block color="secondary">Book</v-btn>
         </div>
       </v-flex>
@@ -35,8 +36,12 @@
 </template>
 
 <script>
+  import itemTabs from './hotel-list-item-tabs'
   export default {
     name: "hotels-list-item",
+    components: {
+      itemTabs
+    },
     props: {
       hotel: {
         type: Object,
@@ -62,15 +67,17 @@
         return parseInt(rate.charAt(0))
       },
       formatFacilities() {
-        this.mailFacilities.wifi = _.findIndex(this.hotel.facilities[1], o=>{
-          return o.description.content === 'Wi-fi' && o.indYesOrNo
-        })
-        this.mailFacilities.reception24 = _.findIndex(this.hotel.facilities[1], o=>{
-          return o.description.content === '24-hour reception' && o.indYesOrNo
-        })
-        this.mailFacilities.carPark = _.findIndex(this.hotel.facilities[1], o=>{
-          return o.description.content === 'Car park' && o.indYesOrNo
-        })
+        if (this.hotel.facilities && this.hotel.facilities[1]) {
+          this.mailFacilities.wifi = _.findIndex(this.hotel.facilities[1], o => {
+            return o.description.content === 'Wi-fi' && o.indYesOrNo
+          })
+          this.mailFacilities.reception24 = _.findIndex(this.hotel.facilities[1], o => {
+            return o.description.content === '24-hour reception' && o.indYesOrNo
+          })
+          this.mailFacilities.carPark = _.findIndex(this.hotel.facilities[1], o => {
+            return o.description.content === 'Car park' && o.indYesOrNo
+          })
+        }
       }
     }
   }

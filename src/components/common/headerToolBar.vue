@@ -3,7 +3,7 @@
         <v-icon @click="toggleDrawer">menu</v-icon>
 
         <v-toolbar-title class="white--text">
-            <v-img :width="200" :src="require('../../assets/logo.png')"></v-img>
+            <v-img :width="200" src="http://booking.s-plus.me/img/logo.jpeg"></v-img>
         </v-toolbar-title>
 
         <v-spacer></v-spacer>

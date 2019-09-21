@@ -1,4 +1,6 @@
 .hotel-card {
+  position: relative;
+  background: white;
   -webkit-box-shadow: 0px 1px 2px 0px #70817c;
   box-shadow: 0px 1px 2px 0px #70817c;
   margin-bottom: 20px;
@@ -36,4 +38,31 @@
 
 .v-rating .v-icon {
   padding: .1rem;
+}
+
+.hotel-list-items-tabs {
+  .v-expansion-panels {
+    position: static;
+  }
+  .v-expansion-panel {
+    position: static;
+    display: inline-block;
+    flex: 0;
+    .v-expansion-panel-content  {
+      position: absolute;
+      left: 0;
+      top: 100%;
+      width: 100%;
+      background: white;
+    }
+  }
+  .v-expansion-panel--active {
+    margin-top: 0 !important;
+  }
+  .v-expansion-panel--active .v-expansion-panel-header {
+    min-height: 48px !important;
+  }
+  .v-expansion-panel--active:not(:first-child), .v-expansion-panel--active + .v-expansion-panel {
+    margin-top: 0;
+  }
 }

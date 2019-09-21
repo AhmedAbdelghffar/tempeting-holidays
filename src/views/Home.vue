@@ -1,6 +1,6 @@
 <template>
   <div class="page-home page">
-    <div class="home-search-section section" :style="{ backgroundImage: `url( ${searchBg} )` }">
+    <div class="home-search-section section" style="background-image: url('http://booking.s-plus.me/img/background.jpeg')">
       <v-container >
         <search></search>
       </v-container>
